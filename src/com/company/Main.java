@@ -7,11 +7,13 @@ public class Main {
         int arr[] = new int[100];
         int sum = 0;
         int count = 0;
-        int totalcount =0;
+        double totalcount =0;
+        double avecount=0;
+        int run =100;
 
 
 
-        for (int h = 0; h < 100; h++)
+        for (int h = 0; h < run; h++)
         {
             count=0;
             for (int k = 0; k < arr.length; k++) {arr[k] = 0;}
@@ -32,8 +34,9 @@ public class Main {
             }
             System.out.println(count);
             totalcount+=count;
-            
+            avecount=totalcount/run;
         }
+        System.out.println("average is " + avecount);
     }
 }
 
