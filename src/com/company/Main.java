@@ -1,42 +1,59 @@
 package com.company;
-
+import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
 
-        int arr[] = new int[100];
-        int sum = 0;
-        int count = 0;
-        double totalcount =0;
-        double avecount=0;
         int run =100;
-
-
-
-        for (int h = 0; h < run; h++)
+        while(run>=1)
         {
-            count=0;
-            for (int k = 0; k < arr.length; k++) {arr[k] = 0;}
+            //establish variables
+            int sum, count;
+            double totalcount =0, avecount=0;
+            int arr[] = new int[100];
 
-            while (true)
+            //prompt the user
+            System.out.println("How many times should the program run?");
+
+            //Scanner grabs user input
+            Scanner s = new Scanner(System.in);
+            run=s.nextInt();
+
+            //checks the numbers a certain number of times
+            for (int h = 0; h < run; h++)
             {
-                count++;
+                //reset count
+                count=0;
+                for (int k = 0; k < arr.length; k++) {arr[k] = 0;}
 
-                int i = (int) (Math.random() * 100 + 1);
+                while (true)
+                {
+                    //iterate variables
+                    count++;
+                    sum = 0;
 
-                arr[i - 1] = 1;
+                    //pick a random number 0-100 and fill array
+                    int i = (int) (Math.random() * 100 + 1);
+                    arr[i - 1] = 1;
 
-                sum = 0;
+                    //check if array is full
+                    for (int j = 0; j < arr.length; j++) {sum += arr[j];}
+                    if (sum == 100) {break;}
+                }
 
-                for (int j = 0; j < arr.length; j++) {sum += arr[j];}
-
-                if (sum == 100) {break;}
+                //calculate total average
+                totalcount+=count;
+                avecount=totalcount/run;
             }
-            System.out.println(count);
-            totalcount+=count;
-            avecount=totalcount/run;
+            System.out.println("The average after " + run + " iterations is " + avecount);
+            System.out.println("\nWould you like to continue?\nEnter 1 for Yes\nEnter 0 for No");
+            run=s.nextInt();
         }
-        System.out.println("average is " + avecount);
+        System.out.println("Thanks and goodbye!");
+
+
+
+
     }
 }
 
